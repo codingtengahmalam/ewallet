@@ -16,3 +16,17 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api'], function () use ($router)
+{
+    $router->post('login', 'AuthController@login');
+});
+
+Route::group([
+    'middleware' => 'auth',
+    'prefix' => 'api'
+], function ($router) {
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::get('me', 'AuthController@me');
+});
