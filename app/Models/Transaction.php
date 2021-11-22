@@ -8,11 +8,9 @@ class Transaction extends Model
 {
     CONST TYPE_DEBIT = 'debit';
     CONST TYPE_CREDIT = 'credit';
-    CONST ACTIVITY_TOPUP = 'topup';
-    CONST ACTIVITY_TRANSFER = 'transfer';
 
     protected $fillable = [
-        'activity', 'type','amount','description'
+        'type','amount','description','wallet_id'
     ];
 
     public function wallet(){
