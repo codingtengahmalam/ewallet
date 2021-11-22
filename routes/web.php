@@ -30,4 +30,6 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::get('me', 'ProfileController@profile');
     Route::post('wallet', 'ProfileController@registerWallet');
+    Route::post('wallet/topup', 'WalletController@topup');
+
 });
