@@ -15,6 +15,12 @@ class WalletController extends Controller
         $this->wrepo = new WalletRepository();
     }
 
+    public function getDetail(){
+        $wallet_id = auth()->user()->wallet->id;
+        $detail = $this->wrepo->getWalletDetail($wallet_id);
+        return $this->responseSuccess('success', $detail);
+    }
+
 
     public function topup(Request $request){
         $this->validate($request, [
