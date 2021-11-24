@@ -31,4 +31,16 @@ class WalletController extends Controller
         $wallet = $this->wrepo->increaseBalance($wallet_id,$request->amount,'topup balance');
         return $this->responseSuccess('success topup wallet', $wallet);
     }
+
+    public function transfer(Request $request){
+        $this->validate($request, [
+            'amount' => 'int|min:1|required',
+            'wallet_id' => 'int|required',
+            'note' => 'string|max:100'
+        ]);
+
+        $result = $this->wrepo->transferBalance($request->wallet_id, $request->amount, $request->note);
+
+       return $this->responseSuccess('Success transfer balance', $result);
+    }
 }

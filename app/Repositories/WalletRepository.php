@@ -22,7 +22,7 @@ class WalletRepository
         }])->firstOrFail();
     }
 
-    public function transfer(int $wallet_id, int $amount, string $note){
+    public function transferBalance(int $wallet_id, int $amount, string $note){
        return \DB::transaction(function () use ($wallet_id, $amount, $note) {
             $source = auth()->user()->wallet();
 
